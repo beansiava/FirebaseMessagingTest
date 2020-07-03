@@ -25,6 +25,24 @@ class NotificationButton extends Component {
     }
 }
 
+const onPress = event => {
+    this.props.firebase.askForPermission();
+    event.preventDefault();
+};
+
+export const notificationFunction = (props) => {
+    const onPress = event => {
+        props.firebase.askForPermission();
+        event.preventDefault();
+    };
+    return ( 
+        <button onClick={onPress} >
+                Click to enable notifications
+        </button>
+     );
+}
+
+export const FireFunction = withFirebase(notificationFunction);
 
 export const FireNotificationButton = withFirebase(NotificationButton);
 
